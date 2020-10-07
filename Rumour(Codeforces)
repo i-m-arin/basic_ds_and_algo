@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll INF = LLONG_MAX;
+ll cnt[100001];
+vector <ll> arr[100001];
+ll visited[100001];
+ll sum;
+void dfs(ll a);
+int main()
+{
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+	ll n, m, c, a, b, i, j, k;
+	cin >> n >> m;
+	for (i = 1; i <= n; i++)
+	{
+		cin >> cnt[i];
+	}
+	for (j = 1; j <= m; j++)
+	{
+		cin >> a >> b;
+		arr[a].push_back(b);
+		arr[b].push_back(a);
+	}
+	ll ans = 0;
+	for (k = 1; k <= n; k++)
+	{
+		if (visited[k] == 0)
+		{
+			sum = INF;
+			dfs(k);
+			ans += sum;
+		}
+
+	}
+	cout << ans;
+
+	return 0;
+}
+void dfs(ll a)
+{
+	visited[a] = 1;
+	if (cnt[a] < sum)
+		sum = cnt[a];
+	for (auto child : arr[a])
+	{
+		if (!visited[child])
+			dfs(child);
+	}
+}

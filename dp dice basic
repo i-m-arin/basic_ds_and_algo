@@ -20,6 +20,7 @@ int main()
             dp[i]=(dp[i]+dp[i-x])%mod;
         }
     }
+    // Gives output
     cout<<dp[n];
     return 0;
 }

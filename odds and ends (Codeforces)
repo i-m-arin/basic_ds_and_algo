@@ -15,6 +15,7 @@ int main()
     if(a[0]%2!=0 && a[n-1]%2!=0 && n%2!=0)
     cout<<"yes";
     else
+    //gives output
     cout<<"no";
     return 0;
 }
